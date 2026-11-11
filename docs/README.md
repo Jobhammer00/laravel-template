@@ -11,7 +11,7 @@ Dit project is gemaakt uit de CODE14 Laravel-template (via Route14 of met
 - Laravel 13 met de Vue + Inertia-starterkit (Fortify, Wayfinder, TypeScript, Tailwind 4).
 - Inloggen, wachtwoord vergeten, 2FA en passkeys via Fortify. Registratie staat uit: een admin nodigt gebruikers uit.
 - Rollen en rechten met `spatie/laravel-permission`. Rechten staan als enum in `app/Enums/Permission.php`, rollen in `app/Enums/Role.php`. Admin krijgt altijd alle rechten. Een rol is een sjabloon: per gebruiker mag je afwijken.
-- Horizon, Sentry, `spatie/laravel-data`, `spatie/laravel-activitylog` en de healthpagina (`code14/quality-watch-health`, met Oh Dear).
+- Horizon, Sentry, `spatie/laravel-data`, `spatie/laravel-activitylog` en de healthpagina (`spatie/laravel-health` op `/health`, alleen ingelogd, met Oh Dear).
 - Pest, Pint en PHPStan op level 8 (Larastan). Vitest, ESLint en Prettier voor de frontend.
 - shadcn-vue-componenten in `resources/js/components/ui`. Dezelfde set als de prototype-kit van Route14, dus schermen uit Route14 werken hier zonder ombouw.
 
@@ -26,4 +26,3 @@ Route14 vervangt `theme.css` per project met het design system van de klant (als
 - Eigen rollen en rechten in de enums. `PermissionSeeder` maakt ze bij elke deploy aan.
 - Healthchecks voor elke externe koppeling (`app/Providers/HealthServiceProvider.php`).
 - Deploy en omgevingen: niet in de template, want dat verschilt per klant.
-- CI: zet de secret `COMPOSER_AUTH` (GitLab-token voor de `code14/*`-packages) in de repo.
