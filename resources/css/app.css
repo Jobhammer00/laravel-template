@@ -1,0 +1,206 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+@import './theme.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Defaults only: theme.css sets --font-sans and --font-display on :root for the client's fonts. */
+@theme {
+    --font-sans: ui-sans-serif, system-ui, sans-serif;
+    --font-display: var(--font-sans);
+}
+
+@theme inline {
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    --color-sidebar: var(--sidebar);
+    --color-success: var(--success);
+    --color-success-foreground: var(--success-foreground);
+    --color-warning: var(--warning);
+    --color-warning-foreground: var(--warning-foreground);
+    --color-info: var(--info);
+    --color-info-foreground: var(--info-foreground);
+    --shadow-xs: var(--shadow);
+    --shadow-sm: var(--shadow);
+
+    /* Derived from the design-system tokens, so theme.css stays the one file a design export replaces. */
+    --color-primary-muted: color-mix(
+        in oklab,
+        var(--primary) 10%,
+        var(--background)
+    );
+    --color-primary-selected: color-mix(
+        in oklab,
+        var(--primary) 14%,
+        var(--card)
+    );
+    --color-primary-selected-foreground: var(--primary);
+    --color-primary-border: color-mix(
+        in oklab,
+        var(--primary) 35%,
+        var(--border)
+    );
+    --color-destructive-muted: color-mix(
+        in oklab,
+        var(--destructive) 10%,
+        var(--background)
+    );
+    --color-success-muted: color-mix(
+        in oklab,
+        var(--success) 12%,
+        var(--background)
+    );
+    --color-warning-muted: color-mix(
+        in oklab,
+        var(--warning) 12%,
+        var(--background)
+    );
+    --color-info-muted: color-mix(in oklab, var(--info) 12%, var(--background));
+
+    --radius-xl: calc(var(--radius) + 4px);
+
+    --font-mono:
+        'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* The type scale of the design system: text-hero … text-label, values from theme.css. */
+@theme inline {
+    --text-hero: var(--type-hero-size);
+    --text-hero--line-height: var(--type-hero-leading);
+    --text-hero--font-weight: var(--type-hero-weight);
+    --text-hero--letter-spacing: var(--type-hero-tracking);
+    --text-display: var(--type-display-size);
+    --text-display--line-height: var(--type-display-leading);
+    --text-display--font-weight: var(--type-display-weight);
+    --text-display--letter-spacing: var(--type-display-tracking);
+    --text-h1: var(--type-h1-size);
+    --text-h1--line-height: var(--type-h1-leading);
+    --text-h1--font-weight: var(--type-h1-weight);
+    --text-h1--letter-spacing: var(--type-h1-tracking);
+    --text-h2: var(--type-h2-size);
+    --text-h2--line-height: var(--type-h2-leading);
+    --text-h2--font-weight: var(--type-h2-weight);
+    --text-h2--letter-spacing: var(--type-h2-tracking);
+    --text-h3: var(--type-h3-size);
+    --text-h3--line-height: var(--type-h3-leading);
+    --text-h3--font-weight: var(--type-h3-weight);
+    --text-h3--letter-spacing: var(--type-h3-tracking);
+    --text-body: var(--type-body-size);
+    --text-body--line-height: var(--type-body-leading);
+    --text-body--font-weight: var(--type-body-weight);
+    --text-body--letter-spacing: var(--type-body-tracking);
+    --text-small: var(--type-small-size);
+    --text-small--line-height: var(--type-small-leading);
+    --text-small--font-weight: var(--type-small-weight);
+    --text-small--letter-spacing: var(--type-small-tracking);
+    --text-label: var(--type-label-size);
+    --text-label--line-height: var(--type-label-leading);
+    --text-label--font-weight: var(--type-label-weight);
+    --text-label--letter-spacing: var(--type-label-tracking);
+}
+
+@layer utilities {
+    .text-hero {
+        font-family: var(--type-hero-font, inherit);
+    }
+    .text-display {
+        font-family: var(--type-display-font, inherit);
+    }
+    .text-h1 {
+        font-family: var(--type-h1-font, inherit);
+    }
+    .text-h2 {
+        font-family: var(--type-h2-font, inherit);
+    }
+    .text-h3 {
+        font-family: var(--type-h3-font, inherit);
+    }
+    .text-body {
+        font-family: var(--type-body-font, inherit);
+    }
+    .text-small {
+        font-family: var(--type-small-font, inherit);
+    }
+    .text-label {
+        font-family: var(--type-label-font, inherit);
+    }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+    button:not(:disabled),
+    [role='button']:not([aria-disabled='true']) {
+        cursor: pointer;
+    }
+}
