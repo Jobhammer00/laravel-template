@@ -30,10 +30,6 @@ return [
 
     // PDF rendering. Every environment brings its own Gotenberg; on the
     // cluster the chart sets GOTENBERG_URL to the service next to the app.
-    'gotenberg' => [
-        'url' => env('GOTENBERG_URL', 'http://127.0.0.1:3000'),
-    ],
-
     'slack' => [
         'notifications' => [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),

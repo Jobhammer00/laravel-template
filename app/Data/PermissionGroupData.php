@@ -19,11 +19,12 @@ class PermissionGroupData extends Data
 
     public static function fromGroup(PermissionGroup $group): self
     {
-        $permissions = array_values(array_map(
-            PermissionData::fromPermission(...),
-            array_filter(Permission::cases(), fn (Permission $permission): bool => $permission->group() === $group),
-        ));
+        // groupBy, not a comparison: with one group PHPStan sees `group() === $group` as always true.
+        $permissions = collect(Permission::cases())
+            ->groupBy(fn (Permission $permission): string => $permission->group()->value)
+            ->get($group->value, collect())
+            ->map(PermissionData::fromPermission(...));
 
-        return new self($group, $group->label(), $permissions);
+        return new self($group, $group->label(), array_values($permissions->all()));
     }
 }

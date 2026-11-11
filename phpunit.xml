@@ -33,5 +33,6 @@
         <env name="PULSE_ENABLED" value="false"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
         <env name="NIGHTWATCH_ENABLED" value="false"/>
+        <env name="OH_DEAR_HEALTH_CHECK_SECRET" value="test-secret"/>
     </php>
 </phpunit>
