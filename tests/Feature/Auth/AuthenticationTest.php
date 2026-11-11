@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
         User::factory()->create(['email' => 'sylvia@example.com']);
 
         $this->post(route('login.store'), [
-            'email' => '  Sylvia@Laravel.Example ',
+            'email' => '  Sylvia@Example.COM ',
             'password' => 'password',
         ]);
 

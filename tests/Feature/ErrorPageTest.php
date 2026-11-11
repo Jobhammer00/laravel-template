@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Facades\Route;
+use Illuminate\View\View;
 use Inertia\Testing\AssertableInertia as Assert;
 
 test('a page without the right shows the error page inside the app, with status 403', function () {
@@ -42,7 +43,8 @@ test('a server error shows the error page only with debug off', function () {
         ->assertInertia(fn (Assert $page) => $page->component('ErrorPage')->where('status', 500));
 
     config(['app.debug' => true]);
-    $this->get('/kapot')->assertStatus(500)->assertDontSee('"component":"ErrorPage"', false);
+    // Not the Inertia view: Laravel's own debug page (which quotes this test's source, so no assertDontSee here).
+    expect($this->get('/kapot')->assertStatus(500)->baseResponse->getOriginalContent())->not->toBeInstanceOf(View::class);
 });
 
 test('a json request keeps a json error', function () {

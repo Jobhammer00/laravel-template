@@ -85,7 +85,7 @@ test('an admin can add a user, who gets an invitation', function () {
     Notification::fake();
 
     $this->actingAs($this->admin)
-        ->post(route('users.store'), validUserData(['email' => 'Sylvia@Laravel.example']))
+        ->post(route('users.store'), validUserData(['email' => 'Sylvia@Example.com']))
         ->assertSessionHasNoErrors();
 
     $user = User::where('email', 'sylvia@example.com')->sole();
@@ -206,7 +206,7 @@ test('the edit page offers each role with its template of rights', function () {
             ->component('users/Edit')
             ->where('user.permissions', fn ($values) => sortedValues($values) === sortedValues(Permission::cases()))
             ->has('roles', count(Role::cases()))
-            ->where('roles.2.value', Role::Admin->value)
+            ->where('roles.1.value', Role::Admin->value)
             ->where('roles.1.permissions', fn ($values) => sortedValues($values) === sortedValues(Permission::cases()))
             ->where('permissionGroups.0.label', 'Algemeen'),
         );

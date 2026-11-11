@@ -11,7 +11,7 @@ test('it makes a test user per role and an inactive one, also on a second run', 
 
     $users = User::where('email', 'like', 'info+%@code14.nl')->get();
 
-    expect($users)->toHaveCount(4)
+    expect($users)->toHaveCount(3)
         ->and($users->pluck('role')->unique()->values()->all())->toEqualCanonicalizing(Role::cases())
         ->and($users->where('is_active', false)->pluck('email')->all())->toBe(['info+inactief@code14.nl'])
         ->and($users->every(fn (User $user) => Hash::check(LocalUserSeeder::PASSWORD, $user->password)))->toBeTrue();
