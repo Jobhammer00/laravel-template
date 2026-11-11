@@ -1,0 +1,4 @@
+{
+    "include": ["app", "config", "database", "resources", "routes", "tests"],
+    "processTimeout": 120
+}

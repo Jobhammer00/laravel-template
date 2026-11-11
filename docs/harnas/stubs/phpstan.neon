@@ -1,0 +1,10 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - app/
+
+    # Baseline for every project. Do not lower it.
+    level: 8
