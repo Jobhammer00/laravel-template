@@ -1,20 +1,23 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Console\Scheduling\Event;
 use Illuminate\Console\Scheduling\Schedule;
 use Spatie\Health\Checks\Check;
 use Spatie\Health\Checks\Checks\CacheCheck;
 use Spatie\Health\Checks\Checks\DatabaseCheck;
+use Spatie\Health\Checks\Checks\DebugModeCheck;
 use Spatie\Health\Checks\Checks\HorizonCheck;
 use Spatie\Health\Checks\Checks\PingCheck;
 use Spatie\Health\Checks\Checks\RedisCheck;
 use Spatie\Health\Checks\Checks\ScheduleCheck;
 use Spatie\Health\Facades\Health;
 
-test('the application checks are registered next to the ones of the package', function () {
+test('the application checks are registered', function () {
     $checks = Health::registeredChecks()->map(fn (Check $check) => $check::class);
 
     expect($checks)->toContain(
+        DebugModeCheck::class,
         DatabaseCheck::class,
         CacheCheck::class,
         RedisCheck::class,
@@ -41,16 +44,12 @@ test('the scheduler runs the checks and beats the heart every minute', function 
         ->toContain('health:schedule-check-heartbeat');
 });
 
-test('the health page is closed to an address outside the allow list', function () {
-    $this->withServerVariables(['REMOTE_ADDR' => '203.0.113.10'])
-        ->get('/health')
-        ->assertForbidden();
+test('the health page sends a guest to the login', function () {
+    $this->get('/health')->assertRedirect(route('login'));
 });
 
-test('the health page is open to an address on the allow list', function () {
-    config(['quality-watch-health.allowed_ips' => ['203.0.113.10']]);
-
-    $this->withServerVariables(['REMOTE_ADDR' => '203.0.113.10'])
+test('the health page is open to a signed-in user', function () {
+    $this->actingAs(User::factory()->create())
         ->get('/health')
         ->assertOk();
 });
