@@ -14,6 +14,8 @@ Dit project is gemaakt uit de CODE14 Laravel-template (via Route14 of met
 - Horizon, Sentry, `spatie/laravel-data`, `spatie/laravel-activitylog` en de healthpagina (`spatie/laravel-health` op `/health`, alleen ingelogd, met Oh Dear).
 - Pest, Pint en PHPStan op level 8 (Larastan). Vitest, ESLint en Prettier voor de frontend.
 - shadcn-vue-componenten in `resources/js/components/ui`. Dezelfde set als de prototype-kit van Route14, dus schermen uit Route14 werken hier zonder ombouw.
+- De hulpbestanden van de prototype-kit van Route14, op hetzelfde pad als daar: `v-reveal` en `useScrollProgress` (`resources/js/lib/reveal.ts`, de looks in `resources/css/motion.css`), `SplitText`, `Marquee`, `Parallax` en `CountUp` (`resources/js/components/motion/`), `BrandAsset` en `asset()` (de assets van het design system in `public/images/design`) en `stock` (stockfoto's in `public/images/stock`). Route14 is de bron: de design-system-export overschrijft ze, dus pas ze daar aan, niet hier. Daarom slaan ESLint en Prettier ze over.
+- Teksten via `laravel-vue-i18n`: `trans('<bestand>.<sleutel>')` in Vue leest `lang/nl/<bestand>.php`, dezelfde teksten als de backend. Een scherm uit Route14 krijgt zijn teksten zo.
 
 ## Thema
 
