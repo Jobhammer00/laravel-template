@@ -1,5 +1,5 @@
 // Stock photos for the prototypes: rights-free (Unsplash licence, via picsum.photos), served next to the kit from
-// public/prototype/stock, so the sandbox needs no network. A screen uses them as stock.<name>.src. B218: the
+// public/prototype/stock, so the sandbox needs no network. A screen uses them as stock.<name>.src. B219: the
 // design-system export writes this file to a client app with /images/stock/, next to the photos its screens use.
 export const stock = {
     akker: {

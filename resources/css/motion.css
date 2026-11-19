@@ -1,4 +1,4 @@
-/* #280, B218: the motion of v-reveal (lib/reveal.ts) and Marquee (components/motion/Marquee.vue), shared by the
+/* #280, B219: the motion of v-reveal (lib/reveal.ts) and Marquee (components/motion/Marquee.vue), shared by the
    prototype kit and the client app; the design-system export copies this file as it is. v-reveal marks an element
    with data-reveal and sets data-shown when it scrolls into view; Marquee runs its track. */
 [data-reveal] {

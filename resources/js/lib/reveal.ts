@@ -1,5 +1,5 @@
 // The kit's motion helpers (#280): a screen gets an entrance on scroll, a staggered row or the scroll position in one
-// line, instead of sixty of its own. The looks of v-reveal are in resources/css/motion.css ([data-reveal]). B218: the
+// line, instead of sixty of its own. The looks of v-reveal are in resources/css/motion.css ([data-reveal]). B219: the
 // design-system export copies this file into the client app as it is.
 import { onMounted, onUnmounted, ref } from 'vue';
 import type { Directive, Ref } from 'vue';
