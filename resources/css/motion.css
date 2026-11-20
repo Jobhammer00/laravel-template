@@ -1,0 +1,74 @@
+/* #280, B219: the motion of v-reveal (lib/reveal.ts) and Marquee (components/motion/Marquee.vue), shared by the
+   prototype kit and the client app; the design-system export copies this file as it is. v-reveal marks an element
+   with data-reveal and sets data-shown when it scrolls into view; Marquee runs its track. */
+[data-reveal] {
+    transition:
+        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        clip-path 1s cubic-bezier(0.65, 0, 0.35, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal]:not([data-shown]) {
+    opacity: 0;
+}
+[data-reveal='up']:not([data-shown]) {
+    transform: translate3d(0, 2.5rem, 0);
+}
+[data-reveal='down']:not([data-shown]) {
+    transform: translate3d(0, -2.5rem, 0);
+}
+[data-reveal='left']:not([data-shown]) {
+    transform: translate3d(3rem, 0, 0);
+}
+[data-reveal='right']:not([data-shown]) {
+    transform: translate3d(-3rem, 0, 0);
+}
+[data-reveal='scale']:not([data-shown]) {
+    transform: scale(0.92);
+}
+[data-reveal='blur']:not([data-shown]) {
+    filter: blur(12px);
+}
+[data-reveal='mask']:not([data-shown]) {
+    opacity: 1;
+    clip-path: inset(100% 0 0 0);
+}
+.r14-marquee {
+    overflow: hidden;
+}
+.r14-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: r14-marquee var(--marquee-duration, 30s) linear infinite;
+}
+.r14-marquee[data-reverse] .r14-marquee-track {
+    animation-direction: reverse;
+}
+.r14-marquee[data-pause]:hover .r14-marquee-track {
+    animation-play-state: paused;
+}
+.r14-marquee-group {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: var(--marquee-gap, 3rem);
+    padding-right: var(--marquee-gap, 3rem);
+}
+@keyframes r14-marquee {
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        clip-path: none !important;
+    }
+    .r14-marquee-track {
+        animation: none;
+    }
+}

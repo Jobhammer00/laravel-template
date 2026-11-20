@@ -100,6 +100,12 @@ export default defineConfigWithVueTs(
             'vitest.config.ts',
             'resources/js/actions/**',
             'resources/js/components/ui/*',
+            // Route14's prototype kit: its design-system export writes these as they are (docs/besluiten.md B1).
+            'resources/js/components/BrandAsset.vue',
+            'resources/js/components/motion/*.vue',
+            'resources/js/lib/assets.ts',
+            'resources/js/lib/reveal.ts',
+            'resources/js/lib/stock.ts',
             'resources/js/routes/**',
             'resources/js/wayfinder/**',
         ],
